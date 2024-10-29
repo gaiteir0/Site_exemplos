@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neymar Jr.</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1a1a1a;
+            color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            background: linear-gradient(to right, #ff9900, #ffcc00);
+            color: #fff;
+            padding: 40px 0;
+            text-align: center;
+        }
+        .btn-custom {
+            background-color: #009639;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 10px 0;
+        }
+        .btn-custom:hover {
+            background-color: #006d2c;
+        }
+        .title {
+            color: #ffcc00;
+            margin-top: 20px;
+        }
+        footer {
+            background-color: #333;
+            color: #f0f0f0;
+            text-align: center;
+            padding: 10px 0;
+        }
+        #totalClickCounter {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: Arial, sans-serif;
+        }
+        .section-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+        }
+        .section {
+            max-width: 300px;
+            text-align: center;
+        }
+        .image {
+            width: 100%; /* Ajuste conforme necessário */
+            height: auto; /* Mantém a proporção */
+            margin-bottom: 10px; /* Espaço abaixo da imagem */
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>Neymar Jr.</h1>
+    </header>
+
+    <div id="totalClickCounter">Total de Cliques: 0</div>
+
+    <main class="section-container">
+        <div class="section">
+            <img src="ação.jpg" alt="Neymar em ação" class="image">
+            <h3 class="title">Carreira</h3>
+            <button class="btn-custom toggleTextBtn" data-text-id="careerText">Mostrar Carreira</button>
+            <p id="careerText" style="display:none;">Nascido em 1992, Neymar começou sua carreira no Santos FC, onde conquistou a Copa do Brasil e a Taça Libertadores. No Barcelona, formou o trio de ataque MSN com Messi e Suárez, vencendo a UEFA Champions League em 2015. Atualmente, joga pelo Al-Hilal na Arábia Saudita, após passagem vitoriosa pelo Paris Saint-Germain (PSG).</p>
+        </div>
+        <div class="section">
+            <img src="golaço.jpg" alt="Conquistas de Neymar" class="image">
+            <h3 class="title">Conquistas</h3>
+            <button class="btn-custom toggleTextBtn" data-text-id="achievementsText">Mostrar Conquistas</button>
+            <p id="achievementsText" style="display:none;">Além de títulos como a Copa Libertadores e a Champions League, Neymar tem uma carreira repleta de honras, incluindo a medalha de ouro olímpica em 2016, títulos nacionais e internacionais pelo PSG, e prêmios individuais como o melhor jogador sul-americano.</p>
+        </div>
+        <div class="section">
+            <img src="vida.jpg" alt="Vida Pessoal de Neymar" class="image">
+            <h3 class="title">Vida Pessoal</h3>
+            <button class="btn-custom toggleTextBtn" data-text-id="personalLifeText">Mostrar Vida Pessoal</button>
+            <p id="personalLifeText" style="display:none;">Fora dos campos, Neymar é uma figura influente, com milhões de seguidores nas redes sociais. Ele também é conhecido por seu envolvimento com causas sociais, ajudando crianças e famílias em situação de vulnerabilidade no Brasil. Além disso, Neymar Jr. é pai de Davi Lucca, nascido em 2011.</p>
+        </div>
+    </main>
+
+    <div class="text-center" style="text-align: center; margin-top: 20px;">
+        <button class="btn-custom" onclick="window.location.href='cores.html'">Ver Mais</button>
+    </div>
+
+    <script>
+        let totalClicks = 0;
+        const totalClickCounter = document.getElementById('totalClickCounter');
+        const toggleButtons = document.querySelectorAll('.toggleTextBtn');
+
+        function updateTotalClicks() {
+            totalClickCounter.textContent = "Total de Cliques: " + totalClicks;
+        }
+
+        toggleButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const textId = this.getAttribute('data-text-id');
+                const textElement = document.getElementById(textId);
+
+                if (textElement.style.display === 'none') {
+                    textElement.style.display = 'block';
+                    this.textContent = 'Esconder';
+                } else {
+                    textElement.style.display = 'none';
+                    this.textContent = 'Mostrar ' + this.parentElement.querySelector('.title').textContent;
+                }
+
+                totalClicks++;
+                updateTotalClicks();
+            });
+        });
+    </script>
+</body>
+</html>

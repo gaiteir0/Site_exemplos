@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adicionar Nomes à Lista</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1a1a1a;
+            color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+        .header {
+            background: linear-gradient(to right, #ff9900, #ffcc00);
+            color: #fff;
+            padding: 20px 0;
+        }
+        .btn-custom {
+            background-color: #009639;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 10px 0;
+        }
+        .btn-custom:hover {
+            background-color: #006d2c;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            background: #444;
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <h1>Deixe seu nome aqui</h1>
+    </header>
+
+    <input type="text" id="itemInput" placeholder="Digite seu nome">
+    <button id="addItemBtn" class="btn-custom">Adicionar</button>
+
+    <h2>Nomes Fictícios</h2>
+    <ul id="itemList">
+        <li>Willian</li>
+        <li>Eduardo</li>
+        <li>João Paulo</li>
+        <li>Igor Matheus</li>
+    </ul>
+
+    <div style="margin-top: 20px;">
+        <button class="btn-custom" onclick="window.location.href='index.html'">Voltar para o Início</button>
+    </div>
+
+    <script>
+        document.getElementById('addItemBtn').addEventListener('click', function() {
+            const inputValue = document.getElementById('itemInput').value;
+            if (inputValue.trim() !== '') {
+                const li = document.createElement('li');
+                li.textContent = inputValue;
+                document.getElementById('itemList').appendChild(li);
+                document.getElementById('itemInput').value = ''; 
+            }
+        });
+    </script>
+
+</body>
+</html>
